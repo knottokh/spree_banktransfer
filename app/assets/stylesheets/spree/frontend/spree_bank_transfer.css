@@ -1,6 +1,6 @@
 /*
  *= require jquery-ui
- *= require jquery-ui/datepicker
+ *= require jquery-ui/widgets/datepicker
 */
 .ui-datepicker {
   width: 18em; /* fix calendar width */
