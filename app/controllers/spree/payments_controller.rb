@@ -1,6 +1,6 @@
 module Spree
   class PaymentsController < Spree::StoreController
-    before_action :authenticate_spree_user!
+    #before_action :authenticate_spree_user!
     before_action :find_payment
 
     def update
