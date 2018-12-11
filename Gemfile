@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
 # Provides basic authentication functionality for testing parts of your engine
-#version = '3-6-stable'
-gem 'spree', github: 'spree/spree', branch: '3-5-stable'
-#gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '3-1-stable'
+version = '3-6-stable'
+gem 'spree', github: 'spree/spree', branch: version
+gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '3-1-stable'
 #gem 'spree', '~> 3.6.4'
-gem 'spree_auth_devise', '~> 3.3'
+#gem 'spree_auth_devise', '~> 3.3'
 
 gem 'coffee-rails', ' ~> 4.2.2'
 gem 'sass-rails', '~> 5.0.7'
