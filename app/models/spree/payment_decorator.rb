@@ -6,12 +6,12 @@ Spree::Payment.class_eval do
   validates_attachment_content_type :bank_attachment, content_type: /\Aimage\/.*\z/ , if: :validate_bank_details
 
   scope :from_bank_transfer, -> { joins(:payment_method).where(spree_payment_methods: { type: 'Spree::PaymentMethod::BankTransfer' }) }
-  scope :from_bank_transfer_order, -> { joins(:order)}
 
   self.whitelisted_ransackable_attributes = %w( transaction_reference_no state )
 
   def details_submitted?
-    #transaction_reference_no?
-     self.from_bank_transfer_order.payment_state == "completed"
+    transaction_reference_no?
+    
+     #self.from_bank_transfer_order.payment_state == "completed"
   end
 end

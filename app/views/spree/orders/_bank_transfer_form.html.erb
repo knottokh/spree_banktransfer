@@ -13,18 +13,19 @@
      <% end %>
   <% end %>
 <% end %>
-<% if bank_transfer_payment = @order.payments.from_bank_transfer.first %>
-
-  <%= form_for bank_transfer_payment, html: { class: "bt_payment_form" } do |f| %>
-    <table>
-      <tr>
-        <td><%= Spree.t(:bank_attachment) %></td><td><%= f.file_field :bank_attachment %></td>
-      </tr>
-    </table>
-    
-    <br>
-    <% unless bank_transfer_payment.details_submitted? %>
-      <%= f.submit "Submit", confirm: Spree.t(:confirm_details_submit)  %>
+<% unless @order.payment_state == "completed" %>
+  <% if bank_transfer_payment = @order.payments.from_bank_transfer.first %>
+  
+    <%= form_for bank_transfer_payment, html: { class: "bt_payment_form" } do |f| %>
+      <table>
+        <tr>
+          <td><%= Spree.t(:bank_attachment) %></td><td><%= f.file_field :bank_attachment %></td>
+        </tr>
+      </table>
+      
+      <br>
+      
+        <%= f.submit "Submit", confirm: Spree.t(:confirm_details_submit)  %>
     <% end %>
   <% end %>
 <% end %>
