@@ -1,9 +1,9 @@
 <% if bank_transfer_payment = @order.payments.from_bank_transfer.first %>
 
-  <%= form_for bank_transfer_payment, html: { class: "bt_payment_form", style: "#{bank_transfer_payment.details_submitted? ? '' : 'display:none;'}" } do |f| %>
+  <%= form_for bank_transfer_payment, html: { class: "bt_payment_form" } do |f| %>
     <table>
       <tr>
-        <td><%= Spree.t(:bank_attachment) %></td><td><%= f.file_field :bank_attachment, disabled: bank_transfer_payment.details_submitted? %></td>
+        <td><%= Spree.t(:bank_attachment) %></td><td><%= f.file_field :bank_attachment %></td>
       </tr>
     </table>
     

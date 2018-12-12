@@ -1,9 +1,17 @@
 class AddAttachmentImageToBank < ActiveRecord::Migration[4.2]
-  def change
+   def self.up
     change_table :spree_banks do |t|
-      t.attachment :image
+      t.attachment :bank_attachment
     end
-    add_column :spree_payments, :bank_attachment, :image
+    change_table :spree_payments do |t|
+      t.attachment :bank_attachment
+    end
+  end
+
+  def self.down
+    remove_attachment :spree_banks, :bank_attachment
+    remove_attachment :spree_payments, :bank_attachment
+  end
     #remove_column :spree_banks, :name
     #remove_column :spree_banks, :account_no
     #remove_column :spree_banks, :additional_details
@@ -16,5 +24,5 @@ class AddAttachmentImageToBank < ActiveRecord::Migration[4.2]
     #remove_column :spree_payments, :account_no
     #remove_column :spree_payments, :transaction_reference_no
     #remove_column :spree_payments, :deposited_on
-  end
+
 end

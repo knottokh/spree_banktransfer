@@ -1,8 +1,8 @@
 module Spree
   class Bank < ActiveRecord::Base
-    has_attached_file :image
+    has_attached_file :bank_attachment
     
-    validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+    validates_attachment_content_type :bank_attachment, content_type: /\Aimage\/.*\z/
     #validates :name, :account_no , presence: true
     #validates_uniqueness_of :account_no , scope: :name
 
