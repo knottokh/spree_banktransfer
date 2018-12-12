@@ -1,14 +1,16 @@
 <% if bank_transfer_payments = @order.payments.from_bank_transfer %>
   <% bank_transfer_payments.each do |photo| %>
-    <div class="media-left">
-      <!-- Renders image -->
-      <% if photo.bank_attachment.present? %>
-      <%=link_to image_tag(photo.bank_attachment.url,class: 'media-object'), photo.bank_attachment.url(:original), :popup=>['original_image', 'height=700,width=900'] %>
-       <% end %>
-       <div> 
-      <!-- Button to delete image -->
+    <% unless photo.bank_attachment_file_name.nil? %>
+      <div class="media-left">
+        <!-- Renders image -->
+        
+        <%=link_to image_tag(photo.bank_attachment.url,class: 'media-object'), photo.bank_attachment.url(:original), :popup=>['original_image', 'height=700,width=900'] %>
+         
+         <div> 
+        <!-- Button to delete image -->
+        </div>
       </div>
-    </div>
+     <% end %>
   <% end %>
 <% end %>
 <% if bank_transfer_payment = @order.payments.from_bank_transfer.first %>
