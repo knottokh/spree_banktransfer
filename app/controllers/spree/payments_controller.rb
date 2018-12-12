@@ -4,7 +4,7 @@ module Spree
     before_action :find_payment
 
     def update
-      unless spree_current_user.payment_state == "paid" 
+      unless @currentorder.payment_state == "paid" 
         payment_details = PaymentDetails.new(@payment, payment_params)
         if payment_details.save
           flash[:notice] = Spree.t(:payment_successfully_updated)
@@ -18,6 +18,7 @@ module Spree
 
     def find_payment
       @payment = spree_current_user.payments.find_by(number: params[:id])
+      @currentorder = spree_current_user.payments.joins(:order).find_by(number: params[:id])
       unless @payment
         flash[:error] = Spree.t(:payment_not_found)
         #redirect_to :back
