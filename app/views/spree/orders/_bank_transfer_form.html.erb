@@ -1,12 +1,9 @@
 <% if bank_transfer_payments = @order.payments.from_bank_transfer %>
   <% bank_transfer_payments.each do |photo| %>
-    <div class="media-body">
-      <h4 class="media-heading"><%= photo.title %></h4>
-    </div>
     <div class="media-left">
       <!-- Renders image -->
       
-      <%=link_to image_tag(photo.image.url,class: 'media-object'), photo.image.url(:original), :popup=>['original_image', 'height=700,width=900'] %>
+      <%=link_to image_tag(photo.bank_attachment.url,class: 'media-object'), photo.bank_attachment.url(:original), :popup=>['original_image', 'height=700,width=900'] %>
        <div> 
       <!-- Button to delete image -->
       </div>
