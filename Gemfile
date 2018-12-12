@@ -10,6 +10,8 @@ gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '3-1-stable'
 gem 'coffee-rails', ' ~> 4.2.2'
 gem 'sass-rails', '~> 5.0.7'
 
+gem "paperclip"
+
 group :test do
   gem 'minitest'
   gem 'rspec-rails', '~> 3.4.0'

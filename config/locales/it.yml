@@ -17,6 +17,7 @@ it:
     payment_successfully_updated: Pagamento aggiornato con successo
     payment_reference_details: Dettagli pagamento
     transaction_reference_no: Numero transazione
+    bank_attachment: Attach Image
   activerecord:
     models:
       spree/bank:

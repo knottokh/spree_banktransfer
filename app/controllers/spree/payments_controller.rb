@@ -25,7 +25,7 @@ module Spree
 
     private
       def payment_params
-        params.require(:payment).permit(:deposited_on, :bank_name, :account_no, :transaction_reference_no)
+        params.require(:payment).permit(:bank_attachment)
       end
   end
 end

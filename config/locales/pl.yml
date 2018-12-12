@@ -17,6 +17,7 @@ pl:
     payment_successfully_updated: Płatność potwierdzona
     payment_reference_details: Szczegoły przelewu bankowego
     transaction_reference_no: Numer referencyjny transakcji
+    bank_attachment: Attach Image
   activerecord:
     models:
       spree/bank:
