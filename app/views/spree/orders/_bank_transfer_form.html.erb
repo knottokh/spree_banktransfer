@@ -13,7 +13,6 @@
      <% end %>
   <% end %>
 <% end %>
-<%= @order.payment_state  %>
 <% unless @order.payment_state == "paid" %>
   <% if bank_transfer_payment = @order.payments.from_bank_transfer.first %>
   
