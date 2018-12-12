@@ -11,3 +11,6 @@
 .bt_payment_form [type="submit"] { margin-left: 10px; }
 .bt_payment_form input[type="text"], .bt_payment_form input[type="date"] { width: 138px; }
 .hidden { display: none; }
+.media-object{
+    max-width:150px;
+}

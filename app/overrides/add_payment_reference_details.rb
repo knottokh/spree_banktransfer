@@ -6,25 +6,11 @@ Deface::Override.new(
     <% if bank_transfer_payment = @order.payments.from_bank_transfer.first %>
       <fieldset class="no-border-bottom" >
         <legend align="center"><%= Spree.t(:payment_reference_details) %></legend>
-        <table class="index">
-          <thead>
-            <tr data-hook="payments_header">
-              <th><%= Spree.t(:deposited_on) %></th>
-              <th><%= Spree.t(:bank_name) %></th>
-              <th><%= Spree.t(:account_no) %></th>
-              <th><%= Spree.t(:transaction_reference_no) %></th>
-              <th class="actions"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class='align-center'><%= bank_transfer_payment.deposited_on %></td>
-              <td class='align-center'><%= bank_transfer_payment.bank_name %></td>
-              <td class='align-center'><%= bank_transfer_payment.account_no %></td>
-              <td class='align-center'><%= bank_transfer_payment.transaction_reference_no %></td>
-            </tr>
-          </tbody>
-        </table>
+        <% unless bank_transfer_payment.bank_attachment_file_name.nil? %>
+          <div class="media-left">
+            <%=link_to image_tag(bank_transfer_payment.bank_attachment.url,class: 'media-object'), bank_transfer_payment.bank_attachment.url(:original), :popup=>['original_image', 'height=700,width=900'] %>
+          </div>
+        <% end %>
       </fieldset>
     <% end %>
   }
