@@ -1,6 +1,6 @@
 module Spree
   class PaymentsController < Spree::StoreController
-    before_action :authenticate_spree_user!
+    #before_action :authenticate_spree_user!
     before_action :find_payment
 
     def update
@@ -17,7 +17,7 @@ module Spree
     end
 
     def find_payment
-      @payment = spree_current_user.payments.find_by(number: params[:id])
+      @payment = Spree::Payment.find_by(number: params[:id])
       unless @payment
         flash[:error] = Spree.t(:payment_not_found)
         #redirect_to :back
