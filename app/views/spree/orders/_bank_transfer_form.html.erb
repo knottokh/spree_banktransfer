@@ -1,4 +1,4 @@
-<% if bank_transfer_payments = @order.payments.from_bank_transfer %>
+<% if bank_transfer_payment = @order.payments.from_bank_transfer.first %>
   <h4 class="small"><%= Spree.t(:bank_attachment) %></h4>
   <% bank_transfer_payments.each do |photo| %>
     <% unless photo.bank_attachment_file_name.nil? %>
