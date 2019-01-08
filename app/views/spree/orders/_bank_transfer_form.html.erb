@@ -18,5 +18,23 @@
       </div>
       <%= f.submit "Submit", :class => "btn btn-sm btn-default", confirm: Spree.t(:confirm_details_submit)  %>
     <% end %>
+    <% if (banks = Spree::Bank.active).any? %>
+      <div style="padding:20px 0">
+      <table border="1" align='center' width="80%">
+        <tr>
+          <th><%= Spree.t(:bank_name) %></th>
+          <th><%= Spree.t(:account_no) %></th>
+          <th><%= Spree.t(:additional_details) %></th>
+        </tr>
+        <% banks.each do |bank| %>
+          <tr>
+            <td><center><%= bank.name %></center></td>
+            <td><center><%= bank.account_no %></center></td>
+            <td><center><%= bank.additional_details.to_html %></center></td>
+          </tr>
+        <% end %>
+      </table>
+      </div>
+    <% end %>
   <% end %>
 <% end %>
