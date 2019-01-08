@@ -1,17 +1,19 @@
-<% if bank_transfer_payment = @order.payments.from_bank_transfer.first %>
-  <h4 class="small"><%= Spree.t(:bank_attachment) %></h4>
-  <% bank_transfer_payments.each do |photo| %>
-    <% unless photo.bank_attachment_file_name.nil? %>
-      <div class="media-left">
-        <!-- Renders image -->
-        <%=link_to image_tag(photo.bank_attachment.url,class: 'media-object'), photo.bank_attachment.url(:original), :popup=>['original_image', 'height=700,width=900'] %>
-      </div>
-     <% end %>
+<% if @order.payment_state == "paid" %>
+  <% if ank_transfer_payments = @order.payments.from_bank_transfer %>
+    <h4 class="small"><%= Spree.t(:bank_attachment) %></h4>
+    <% bank_transfer_payments.each do |photo| %>
+      <% unless photo.bank_attachment_file_name.nil? %>
+        <div class="media-left">
+          <!-- Renders image -->
+          <%=link_to image_tag(photo.bank_attachment.url,class: 'media-object'), photo.bank_attachment.url(:original), :popup=>['original_image', 'height=700,width=900'] %>
+        </div>
+       <% end %>
+    <% end %>
   <% end %>
 <% end %>
 <% unless @order.payment_state == "paid" %>
   <% if bank_transfer_payment = @order.payments.from_bank_transfer.first %>
-  
+    <h4 class="small"><%= Spree.t(:bank_attachment) %></h4>
     <%= form_for bank_transfer_payment, html: { class: "bt_payment_form" } do |f| %>
       <div style="padding-bottom: 2px;">
         <%= f.file_field :bank_attachment, :class => "btn btn-sm form-control" %>
