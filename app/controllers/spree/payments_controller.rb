@@ -4,16 +4,18 @@ module Spree
     before_action :find_payment
 
     def update
-      unless @payment.order.payment_state == "paid" 
-        payment_details = PaymentDetails.new(@payment, payment_params)
-        if payment_details.save
-          flash[:notice] = Spree.t(:payment_successfully_updated)
-        else
-          flash[:error] = payment_details.errors.to_sentence
-        end
+      if params.require(:payment).exists?
+        unless @payment.order.payment_state == "paid" 
+          payment_details = PaymentDetails.new(@payment, payment_params)
+          if payment_details.save
+            flash[:notice] = Spree.t(:payment_successfully_updated)
+          else
+            flash[:error] = payment_details.errors.to_sentence
+          end
+        end  
+        #redirect_to :back
+        redirect_back fallback_location: root_path
       end  
-      #redirect_to :back
-      redirect_back fallback_location: root_path
     end
 
     def find_payment
