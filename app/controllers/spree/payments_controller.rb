@@ -16,7 +16,7 @@ module Spree
         #redirect_to :back
         redirect_back fallback_location: root_path
       else
-        redirect_to :back  
+        render :show
       end  
       
     end
