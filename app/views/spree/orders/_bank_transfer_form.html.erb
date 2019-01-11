@@ -22,7 +22,7 @@
       <div style="padding-bottom: 2px;">
         <%= f.file_field :bank_attachment, :class => "btn btn-sm form-control" %>
       </div>
-      <%= f.submit "Submit", :class => "btn btn-sm btn-default bt_payment_form_submit", confirm: Spree.t(:confirm_details_submit)  %>
+      <%= f.submit "Submit", :class => "btn btn-sm btn-default bt_payment_form_submit", confirm: Spree.t(:confirm_details_submit) ,data: { disable_with: false } %>
     <% end %>
     <% if (banks = Spree::Bank.active).any? %>
       <div style="padding-top:20px">
