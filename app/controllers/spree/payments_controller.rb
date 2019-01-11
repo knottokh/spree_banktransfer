@@ -4,7 +4,7 @@ module Spree
     before_action :find_payment
 
     def update
-      if params.require(:payment).exists?
+      if params.has_key?(:payment)
         unless @payment.order.payment_state == "paid" 
           payment_details = PaymentDetails.new(@payment, payment_params)
           if payment_details.save
