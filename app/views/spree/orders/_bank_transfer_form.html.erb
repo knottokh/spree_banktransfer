@@ -1,8 +1,12 @@
 <% if @order.payment_state == "paid" %>
   <% if bank_transfer_payments = @order.payments.from_bank_transfer %>
-    <h4 class="small"><%= Spree.t(:bank_attachment) %></h4>
+    <% count = 0 %>
     <% bank_transfer_payments.each do |photo| %>
       <% unless photo.bank_attachment_file_name.nil? %>
+        <% if count == 0 %>
+          <h4 class="small"><%= Spree.t(:bank_attachment) %></h4>
+          <% count = 1 %>
+        <% end %>  
         <div class="media-left">
           <!-- Renders image -->
           <%=link_to image_tag(photo.bank_attachment.url,class: 'media-object'), photo.bank_attachment.url(:original), :popup=>['original_image', 'height=700,width=900'] %>
