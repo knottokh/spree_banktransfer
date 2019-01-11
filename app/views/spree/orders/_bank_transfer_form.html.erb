@@ -8,7 +8,7 @@
     <% count = 0 %>
     <% bank_transfer_payments.each do |photo| %>
       <% unless photo.bank_attachment_file_name.nil? %>
-        <% if count == 0 %>
+        <% if count == 0 && @order.payment_state == "paid"%>
           <h4 class="small"><%= Spree.t(:bank_attachment) %></h4>
           <% count = 1 %>
         <% end %>  
