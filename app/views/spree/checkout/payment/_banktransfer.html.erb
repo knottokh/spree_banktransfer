@@ -16,7 +16,7 @@
           <tr>
             <td><%= bank.name %></td>
             <td><%= bank.account_no %></td>
-            <td><%= bank.additional_details %></td>
+            <td><%= bank.additional_details.html_safe %></td>
           </tr>
         <% end %>
       </table>
