@@ -18,6 +18,7 @@ en:
     payment_reference_details: Bank Transfer Payment Reference Details
     transaction_reference_no: Transaction Reference No
     bank_attachment: Attach Image
+    image_guide: File limet 5 MB and Accept type .jpg, .jpeg, .gif or .png
   activerecord:
     models:
       spree/bank:
